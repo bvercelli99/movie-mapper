@@ -1,0 +1,14 @@
+{
+  "name": "film-locations-api",
+  "version": "1.0.0",
+  "description": "An Api to search for movies and return their filming locations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Vercelli",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
