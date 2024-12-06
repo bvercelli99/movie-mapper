@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import 'dotenv/config';
 import * as cheerio from 'cheerio';
 
@@ -8,9 +9,11 @@ console.log(OMDB_KEY);
 
 const app = express();
 
+app.use(cors());
+
 app.get('/api/search', async function (req, res) {
   try {
-    console.log(req.query);
+    
     if(req.query.title && req.query.title.length > 0) {  
         let movies = await fetch(`https://www.omdbapi.com/?s=${req.query.title}&type=movie&apikey=${OMDB_KEY}`)
         .then(response => response.json())
@@ -47,8 +50,8 @@ app.get('/api/movie/:id', async function (req, res) {
 
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on ${process.env.PORT}`);
 });
 
 async function scrapeInitialLocations(movieId) {
